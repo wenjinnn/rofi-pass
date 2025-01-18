@@ -75,6 +75,9 @@ clip_clear=45
 # open new password entries in editor
 edit_new_pass="true"
 
+## If your editor is tui based, this is needed to produce a new term
+edit_terminal_command="foot"
+
 # default_user is also used for password files that have no user field.
 #default_user="${ROFI_PASS_DEFAULT_USER-$(whoami)}"
 #default_user2=mary_ann

@@ -27,6 +27,7 @@ AUTOTYPE_field='autotype'
 OTPmethod_field='otp_method'
 
 default_autotype="user :tab pass"
+edit_terminal_command=
 delay=2
 wait=0.2
 type_delay=12
@@ -736,7 +737,7 @@ showEntry () {
 
 manageEntry () {
 	if [[ "$1" == "edit" ]]; then
-		EDITOR=$EDITOR PASSWORD_STORE_DIR="${root}" pass edit "${selected_password}"
+		EDITOR=$EDITOR PASSWORD_STORE_DIR="${root}" bash -c "$edit_terminal_command pass edit '${selected_password}'"
 		mainMenu
 	elif [[ $1 == "move" ]]; then
 		cd "${root}" || exit
@@ -778,7 +779,7 @@ manageEntry () {
 
 edit_pass() {
     if [[ $edit_new_pass == "true" ]]; then
-        PASSWORD_STORE_DIR="${root}" pass edit "${1}"
+        PASSWORD_STORE_DIR="${root}" bash -c "$edit_terminal_command pass edit '${1}'"
     fi
 }
 
